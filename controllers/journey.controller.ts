@@ -50,9 +50,9 @@ export const listJourneyDriver = async (req: any, res: any) => {
 
 export const updateJourneyStatus = async (req: any, res: any) => {
     const {status} = req.query;
-    const {id} = req.params;
+    const {journeyId} = req.params;
     try {
-        const journey = await Journey.findById(id);
+        const journey = await Journey.findById(journeyId);
         journey.status = status;
         await journey.save();
         return res.status(200).json({
