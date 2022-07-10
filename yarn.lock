@@ -46,6 +46,13 @@
     "semver" "^7.3.5"
     "tar" "^6.1.11"
 
+"@types/bcrypt@^5.0.0":
+  "integrity" "sha512-agtcFKaruL8TmcvqbndlqHPSJgsolhf/qPWchFlgnW1gECTN/nKbFcoFnvKAQRFfKbh+BO6A3SWdJu9t+xF3Lw=="
+  "resolved" "https://registry.npmjs.org/@types/bcrypt/-/bcrypt-5.0.0.tgz"
+  "version" "5.0.0"
+  dependencies:
+    "@types/node" "*"
+
 "@types/body-parser@*":
   "integrity" "sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g=="
   "resolved" "https://registry.npmjs.org/@types/body-parser/-/body-parser-1.19.2.tgz"
@@ -94,6 +101,13 @@
     "@types/express-serve-static-core" "^4.17.18"
     "@types/qs" "*"
     "@types/serve-static" "*"
+
+"@types/jsonwebtoken@^8.5.8":
+  "integrity" "sha512-zm6xBQpFDIDM6o9r6HSgDeIcLy82TKWctCXEPbJJcXb5AKmi5BNNdLXneixK4lplX3PqIVcwLBCGE/kAGnlD4A=="
+  "resolved" "https://registry.npmjs.org/@types/jsonwebtoken/-/jsonwebtoken-8.5.8.tgz"
+  "version" "8.5.8"
+  dependencies:
+    "@types/node" "*"
 
 "@types/mime@^1":
   "integrity" "sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw=="
@@ -1125,6 +1139,7 @@
     "bson" "^4.6.1"
     "denque" "^2.0.1"
     "mongodb-connection-string-url" "^2.3.2"
+    "saslprep" "^1.0.3"
     "socks" "^2.6.1"
   optionalDependencies:
     "saslprep" "^1.0.3"
@@ -1137,6 +1152,7 @@
     "bson" "^4.5.2"
     "denque" "^2.0.1"
     "mongodb-connection-string-url" "^2.0.0"
+    "saslprep" "^1.0.3"
   optionalDependencies:
     "saslprep" "^1.0.3"
 

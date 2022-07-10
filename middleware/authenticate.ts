@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/user.model");
+import jwt from "jsonwebtoken";
+import {User} from "../models/user.model";
 require("dotenv");
 
 export const authenticate = async (req: any, res: any, next: any) => {
@@ -12,7 +12,7 @@ export const authenticate = async (req: any, res: any, next: any) => {
             });
         }
         token = token.split(" ")[1];
-        const decodedValue = jwt.verify(token, process.env.JWT_SECRET);
+        const decodedValue = jwt.verify(token, process.env.JWT_SECRET) as any;
         const id = decodedValue._id ? decodedValue._id : decodedValue.id;
         const user = await User.findById(id);
         if (!user) {

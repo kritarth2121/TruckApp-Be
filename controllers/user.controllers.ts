@@ -1,10 +1,10 @@
 require("dotenv").config();
-const User = require("../models/user.model");
-const Post = require("../models/post.model");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const {extend} = require("lodash");
-const {newNotification} = require("./notification.controller");
+import {User} from "../models/user.model";
+import {Post} from "../models/post.model";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import {extend} from "lodash";
+import {newNotification} from "./notification.controller";
 
 export const login = async (req: any, res: any) => {
     const {email, password} = req.body;

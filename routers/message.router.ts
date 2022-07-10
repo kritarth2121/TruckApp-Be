@@ -1,7 +1,7 @@
+import {deleteChatByRecipientId, getMessages, deleteMessageById} from "../controllers/message.controller";
 import express from "express";
 
 const router = express.Router();
-const {getMessages, deleteMessageById, deleteChatByRecipientId} = require("../controllers/message.controller");
 
 router.route("/delete-chat").post(deleteChatByRecipientId);
 router.route("/get_messages").post(getMessages);
