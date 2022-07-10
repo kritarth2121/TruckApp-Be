@@ -10,7 +10,7 @@ import {messageRouter} from "./routers/message.router";
 import {authenticate} from "./middleware/authenticate";
 import {createMessage, startMessage} from "./controllers/message.controller";
 import {userRouter} from "./routers/user.router";
-import { journeyRouter } from "./routers/journey.router";
+import {journeyRouter} from "./routers/journey.router";
 
 const app = express();
 app.use(express.json());
@@ -25,7 +25,7 @@ app.use("/users", userRouter);
 app.use("/posts", authenticate, postRouter);
 app.use("/messages", authenticate, messageRouter);
 app.use("/journeys", authenticate, journeyRouter);
-app.get("/", (req, res) => {
+app.get("/test", (req, res) => {
     return res.send({message: "Welcome"});
 });
 
