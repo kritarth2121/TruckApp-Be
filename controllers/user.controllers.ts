@@ -38,37 +38,30 @@ export const login = async (req: any, res: any) => {
 };
 
 export const signup = async (req: any, res: any) => {
-    const {name, username, email, password} = req.body;
+    const {name, email, password, mobile_number, role} = req.body;
     let user = await User.findOne({email: email}).catch((err: any) => {
         console.log(err);
     });
+
+
+
     if (user) {
-        return res.json({
+        return res.status(400).json({
             token: null,
             user: null,
             success: false,
             message: "Account with email already exists, Try logging in instead!",
         });
     }
-    user = await User.findOne({username: username}).catch((err: any) => {
-        console.log(err);
-    });
-    if (user) {
-        return res.json({
-            token: null,
-            user: null,
-            success: false,
-            message: "Account with username already exists",
-        });
-    }
+
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
             name: name,
-            username: username,
             email: email,
             password: hashedPassword,
-            bio: "Hi there! I'm using Kritarth Twitter",
+            role: role,
+            mobile_number: mobile_number,
             profileUrl:
                 "https://res.cloudinary.com/formula-web-apps/image/upload/v1623766149/148-1486972_mystery-man-avatar-circle-clipart_kldmy3.jpg",
         });
@@ -84,7 +77,7 @@ export const signup = async (req: any, res: any) => {
         });
     } catch (err: any) {
         console.log(err);
-        return res.json({
+        return res.status(400).json({
             success: false,
             user: null,
             token: null,
