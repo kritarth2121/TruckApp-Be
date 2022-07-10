@@ -22,14 +22,14 @@ export const login = async (req: any, res: any) => {
                 token: token,
             });
         }
-        return res.json({
+        return res.status(400).json({
             token: null,
             user: null,
             success: false,
             message: "Wrong password, please try again",
         });
     }
-    return res.json({
+    return res.status(400).json({
         token: null,
         user: null,
         success: false,
@@ -42,8 +42,6 @@ export const signup = async (req: any, res: any) => {
     let user = await User.findOne({email: email}).catch((err: any) => {
         console.log(err);
     });
-
-
 
     if (user) {
         return res.status(400).json({
@@ -95,7 +93,7 @@ export const searchById = async (req: any, res: any, next: any, userId: any) => 
         req.userProfile = userObject;
         next();
     } catch (error: any) {
-        res.json({
+        res.status(400).json({
             success: false,
             message: "Failed to Update User",
             errorMessage: error.message,
@@ -108,7 +106,7 @@ export const getSingleUserInfo = async (req: any, res: any) => {
         const user = req.userProfile;
         return res.json({success: true, user: user});
     } catch (error: any) {
-        res.json({
+        res.status(400).json({
             success: false,
             message: "Failed to Update User",
             errorMessage: error.message,
@@ -134,7 +132,7 @@ export const updateCurrentUserDetails = async (req: any, res: any) => {
         user = await user.save();
         res.json({success: true, user: user});
     } catch (err: any) {
-        res.json({
+        res.status(400).json({
             success: false,
             message: "Failed to Update User",
             errorMessage: err.message,
@@ -318,10 +316,25 @@ export const searchUser = async (req: any, res: any) => {
         return res.status(500).json({success: false, message: error.message});
     }
 };
+
 export const getUserChats = async (req: any, res: any) => {
     const user = req.userProfile;
     const data = await User.find({_id: {$in: user.chats}}, "_id name username email profileUrl").catch((err: any) =>
         console.log(err)
     );
     return res.status(200).json({success: true, chats: data});
+};
+
+export const getUsers = async (req: any, res: any) => {
+    const {role} = req.query;
+    try {
+        const users = await User.find({role});
+        if (users.length === 0) {
+            return res.json({success: false, message: "No results"});
+        }
+        return res.json({success: true, users: users});
+    } catch (error: any) {
+        console.log(error);
+        return res.status(500).json({success: false, message: error.message});
+    }
 };

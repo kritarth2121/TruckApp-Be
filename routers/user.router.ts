@@ -1,7 +1,7 @@
+import { getUsers } from './../controllers/user.controllers';
 import express from "express";
 import {authenticate} from "../middleware/authenticate";
 const router = express.Router();
-
 import {fetchUserNotifications} from "../controllers/notification.controller";
 import {
     login,
@@ -25,6 +25,8 @@ router.route("/signup").post(signup);
 router.route("/follow").post(authenticate, follow);
 router.route("/unfollow").post(authenticate, unFollow);
 router.route("/search").get(authenticate, searchUser);
+router.route("/get-user").get(authenticate, getUsers);
+
 
 router.param("userId", searchById);
 router.route("/:userId").get(authenticate, getSingleUserInfo);
