@@ -4,11 +4,8 @@
     "description": "truck app be",
     "main": "index.js",
     "scripts": {
-        "tsc": "./node_modules/typescript/bin/tsc",
         "start": "ts-node index.ts",
         "dev": "nodemon -x ts-node index.ts",
-        "build": "tsc",
-        "postinstall": "npm run build",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
