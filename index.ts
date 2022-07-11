@@ -1,5 +1,5 @@
 require("dotenv").config();
-const port = process.env.port || 8080;
+const port = process.env.PORT || 8080;
 import express from "express";
 import cors from "cors";
 import http from "http";
