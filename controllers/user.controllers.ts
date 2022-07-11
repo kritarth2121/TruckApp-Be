@@ -101,6 +101,13 @@ export const searchById = async (req: any, res: any, next: any, userId: any) => 
     }
 };
 
+export const me = async (req: any, res: any) => {
+    return res.status(200).json({
+        success: true,
+        user: req.user,
+    });
+};
+
 export const getSingleUserInfo = async (req: any, res: any) => {
     try {
         const user = req.userProfile;
