@@ -4,6 +4,7 @@
     "description": "truck app be",
     "main": "index.js",
     "scripts": {
+        "tsc": "./node_modules/typescript/bin/tsc",
         "start": "tsc && node dist/index.js",
         "build": "tsc",
         "postinstall": "npm run build",
